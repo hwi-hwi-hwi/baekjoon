@@ -14,7 +14,7 @@ int main(){
 	cin >> m >> n;
 	
 	vector<vector<int>> tomato(n, vector<int>(m));
-	queue<tuple<int, int, int>> q;  // (xÁÂÇ¥, yÁÂÇ¥, ³¯Â¥)
+	queue<tuple<int, int, int>> q;  // (xï¿½ï¿½Ç¥, yï¿½ï¿½Ç¥, ï¿½ï¿½Â¥)
 	int unripe_count = 0;
 	int max_days = 0;
 	
@@ -43,7 +43,7 @@ int main(){
 			int nx = x + dx[i];
 			int ny = y + dy[i];
 			
-			// »óÀÚ ¹üÀ§¸¦ ¹ş¾î³ªÁö ¾Ê°í, ÀÍÁö ¾ÊÀº Åä¸¶Åä°¡ ÀÖÀ» °æ¿ì 
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³ªï¿½ï¿½ ï¿½Ê°ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¶ï¿½ä°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
 			if((0 <= nx && nx < n) && (0 <= ny && ny < m) && tomato[nx][ny] == 0){
 				tomato[nx][ny] = 1;
 				unripe_count--;
