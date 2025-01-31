@@ -11,6 +11,9 @@
         "initializer_list": "cpp",
         "span": "cpp",
         "text_encoding": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "iostream": "cpp",
+        "b_0000_토마토": "cpp",
+        "tuple": "cpp"
     }
 }
