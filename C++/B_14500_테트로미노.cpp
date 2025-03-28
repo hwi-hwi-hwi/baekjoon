@@ -63,7 +63,9 @@ int main(){
         for(int j = 0; j < m; j++){
             visited[i][j] = true;
             dfs(i, j, 1, graph[i][j]);
-            visited[i][j] = true;
+            visited[i][j] = false;  // 백트래킹
+            
+            // 'ㅗ', 'ㅏ', 'ㅜ', 'ㅓ' 모양 별로 별도로 체크
             checkExtraShape(i, j);
         }
     }
