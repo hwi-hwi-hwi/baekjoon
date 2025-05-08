@@ -3,45 +3,47 @@ import java.util.*;
 
 public class B_28238 {
     public static void main(String[] args) throws IOException {
-        // 빠른 입력
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[][] students = new int[n][5];
+
+        /* 학생 availability 저장: row = 학생, col = 요일(0~4) */
+        byte[][] avail = new byte[n][5];
 
         for (int i = 0; i < n; i++) {
-            String[] line = br.readLine().split(" ");
-            for (int j = 0; j < 5; j++) {
-                students[i][j] = Integer.parseInt(line[j]);
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            for (int d = 0; d < 5; d++) {
+                avail[i][d] = (byte) Integer.parseInt(st.nextToken());
             }
         }
 
-        int maxCount = 0;
-        int[] bestSchedule = new int[5];
+        int bestCnt = -1;            // **-1 로 초기화!**
+        int[] best = new int[5];     // 출력용 배열
 
-        // 5일 중 2일을 고르는 모든 조합
+        /* 5일 중 2일을 고르는 모든 조합은 10가지뿐 */
         for (int d1 = 0; d1 < 5; d1++) {
             for (int d2 = d1 + 1; d2 < 5; d2++) {
-                int count = 0;
 
-                for (int i = 0; i < n; i++) {
-                    if (students[i][d1] == 1 && students[i][d2] == 1) {
-                        count++;
+                int cnt = 0;   // 현재 조합에서 수강 가능한 학생 수
+
+                for (int s = 0; s < n; s++) {
+                    if (avail[s][d1] == 1 && avail[s][d2] == 1) {
+                        cnt++;
                     }
                 }
 
-                if (count > maxCount) {
-                    maxCount = count;
-                    Arrays.fill(bestSchedule, 0);
-                    bestSchedule[d1] = 1;
-                    bestSchedule[d2] = 1;
+                if (cnt > bestCnt) {         // **무조건 ‘>’ 비교**
+                    bestCnt = cnt;
+                    Arrays.fill(best, 0);
+                    best[d1] = 1;
+                    best[d2] = 1;
                 }
             }
         }
 
-        System.out.println(maxCount);
-        for (int i = 0; i < 5; i++) {
-            System.out.print(bestSchedule[i] + " ");
-        }
-        System.out.println();
+        /* 출력 */
+        StringBuilder sb = new StringBuilder();
+        sb.append(bestCnt).append('\n');
+        for (int i = 0; i < 5; i++) sb.append(best[i]).append(i == 4 ? '\n' : ' ');
+        System.out.print(sb);
     }
 }
