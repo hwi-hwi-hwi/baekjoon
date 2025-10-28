@@ -1,0 +1,19 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    coins = list(map(int, input().split()))
+    m = int(input())
+
+    # x원을 만드는 모든 경우의 수
+    dp = [0] * (m + 1)
+    dp[0] = 1
+
+    for coin in coins:
+        for amount in range(coin, m+1):
+            dp[amount] += dp[amount-coin]
+
+    print(dp[m])
