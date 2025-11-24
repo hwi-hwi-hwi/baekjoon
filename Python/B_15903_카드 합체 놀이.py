@@ -15,18 +15,9 @@ for _ in range(m):
     x = heapq.heappop(pq)
     y = heapq.heappop(pq)
 
-    if x == y:
-        temp = []
-        while x != y:
-            temp.append(y)
-            y = heapq.heappop(pq)
+    s = x + y
 
-        for k in temp:
-            heapq.heappush(pq, k)
-
-    x, y = x+y, x+y
-
-    heapq.heappush(pq, x)
-    heapq.heappush(pq, y)
+    heapq.heappush(pq, s)
+    heapq.heappush(pq, s)
 
 print(sum(pq))
